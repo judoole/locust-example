@@ -1,5 +1,8 @@
 *.py[cod]
 
+#Mac
+.DS_Store
+
 .vagrant
 
 # C extensions
