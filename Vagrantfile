@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     client.vm.hostname = "client"
     client.vm.network :private_network, ip: "192.168.33.11"
     client.vm.provision :shell, :path => "client-bootstrap.sh"
-    master.vm.synced_folder "client/", "/locust"
+    client.vm.synced_folder "client/", "/locust"
   end
 
   config.vm.define :web do |web|
