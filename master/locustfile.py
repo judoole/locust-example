@@ -16,6 +16,12 @@ class UserBehavior(TaskSet):
     def requestinfo(self):
         self.client.get("/examples/servlets/servlet/RequestInfoExample")
 
+    @task(1)
+    def requestparams(self):
+        with self.client.post("/examples/servlets/servlet/RequestParamExample", {"firstname":"Clark", "lastname":"Kent"}, catch_response=True) as response:
+            if "Clark" not in response.content:
+                response.failure("Could not find firstname Clark in response")
+
 class WebsiteUser(Locust):
     task_set = UserBehavior
     host = "http://192.168.33.12:8080"
