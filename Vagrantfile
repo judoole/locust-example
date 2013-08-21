@@ -11,18 +11,18 @@ Vagrant.configure("2") do |config|
     master.vm.network :private_network, ip: "192.168.33.10"
     master.vm.provision :shell, :path => "master-bootstrap.sh"
     master.vm.network :forwarded_port, guest:8089, host: 9999
-    master.vm.synced_folder "master/", "/locust"
+    master.vm.synced_folder "locust/", "/locust"
   end
 
-  config.vm.define :client do |client|
-    client.vm.hostname = "client"
-    client.vm.network :private_network, ip: "192.168.33.11"
-    client.vm.provision :shell, :path => "client-bootstrap.sh"
-    client.vm.synced_folder "client/", "/locust"
+  config.vm.define :slave do |slave|
+    slave.vm.hostname = "slave"
+    slave.vm.network :private_network, ip: "192.168.33.11"
+    slave.vm.provision :shell, :path => "slave-bootstrap.sh"
+    slave.vm.synced_folder "locust/", "/locust"
   end
 
   config.vm.define :web do |web|
-    web.vm.hostname = "client"
+    web.vm.hostname = "web"
     web.vm.network :private_network, ip: "192.168.33.12"
     web.vm.provision :shell, :path => "web-bootstrap.sh"
     web.vm.synced_folder "web/", "/web"
