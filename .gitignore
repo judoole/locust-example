@@ -38,3 +38,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Compiled Java shits
+*.war
+*.jar
