@@ -2,7 +2,7 @@ from locust import Locust, TaskSet, task
 
 class JmeterBenchmark(TaskSet):
     def on_start(self):
-        """ on_start is called when a Locust start before any task is scheduled """    
+        # on_start is called when a Locust start before any task is scheduled 
 
     @task(1)
     def index(self):
@@ -20,12 +20,6 @@ class JmeterBenchmark(TaskSet):
     @task(2)
     def sessionExample3(self):
         self.client.get("/examples/servlets/servlet/SessionExample")
-
-    '''@task(1)
-    def requestparams(self):
-        with self.client.post("/examples/servlets/servlet/RequestParamExample", {"firstname":"Clark", "lastname":"Kent"}, catch_response=True) as response:
-            if "Clark" not in response.content:
-                response.failure("Could not find firstname Clark in response")'''
 
 class WebsiteUser(Locust):
     task_set = JmeterBenchmark

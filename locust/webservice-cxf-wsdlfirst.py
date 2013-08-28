@@ -6,7 +6,7 @@ updateCustomer = open("updateCustomer.xml", "r").read()
 class CxfWsdlFirst(TaskSet):
     
     # Update does nothing. We just check that the response is in the 200-numbers.
-    @task(1)
+    @task(4)
     def update(self):
         response = self.client.post(url="/wsdl_first/services/CustomerServicePort",
         	data=updateCustomer,

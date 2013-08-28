@@ -42,3 +42,7 @@ nosetests.xml
 # Compiled Java shits
 *.war
 *.jar
+
+#Idea
+.idea
+*.iml
