@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :slave do |slave|
     slave.vm.hostname = "slave"
     slave.vm.network :private_network, ip: "192.168.33.11"
+    slave.vm.network :forwarded_port, guest:8089, host: 9997
     slave.vm.provision :shell, :path => "slave-bootstrap.sh"
     slave.vm.synced_folder "locust/", "/locust"
   end

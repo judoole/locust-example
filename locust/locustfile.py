@@ -2,7 +2,7 @@ from locust import Locust, TaskSet, task
 
 class JmeterBenchmark(TaskSet):
     def on_start(self):
-        # on_start is called when a Locust start before any task is scheduled 
+        ''' on_start is called when a Locust start before any task is scheduled '''
 
     @task(1)
     def index(self):
