@@ -26,4 +26,4 @@ class WebsiteUser(Locust):
     task_set = CxfWsdlFirst
     host = "http://192.168.33.12:8080"
     min_wait=500
-    max_wait=2000
+    max_wait=5000
